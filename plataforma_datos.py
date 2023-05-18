@@ -26,6 +26,17 @@ def ir_toplevel_notas():
     toplevel_notas.resizable(False, False)
     toplevel_notas.config(bg="red4")
 
+    # texto asignatura
+    nombre= Label(toplevel_notas, text="ASIGNATURA:")
+    nombre.config(bg = "red3",fg="black", font=("Helvetica", 12))   
+    nombre.place(x=10,y=10)
+
+    # caja de texto para nombre
+    nombre_c = Entry(toplevel_notas)
+    nombre_c.config(bg="green3", fg="blue3", font=("Times New Roman", 12), width=10)
+    nombre_c.focus_set()
+    nombre_c.place(x=20,y=10)
+
 
 def ir_toplevel_salud():
     global toplevel_salud
