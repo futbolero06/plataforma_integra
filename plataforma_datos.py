@@ -8,7 +8,7 @@ from tkinter import ttk
 principal= Tk()
 
 #título de la ventana
-principal.title=("PLATAFORMA INTEGRA")
+principal.title("PLATAFORMA INTEGRA")
 
 #anchor de la ventana
 principal.geometry("900x900")
@@ -16,9 +16,32 @@ principal.geometry("900x900")
 #color de la ventana
 principal.config(bg="black")
 
+
+# definicòn de los botones
+def ir_toplevel_notas():
+    global toplevel_notas
+    toplevel_notas = Toplevel()
+    toplevel_notas.title("Notas Académicas")
+    toplevel_notas.geometry("300x300")
+    toplevel_notas.resizable(False, False)
+    toplevel_notas.config(bg="red4")
+
+
+def ir_toplevel_salud():
+    global toplevel_salud
+    toplevel_salud = Toplevel()
+    toplevel_salud.title("IMC")
+    toplevel_salud.geometry("300x300")
+    toplevel_salud.resizable(False, False)
+    toplevel_salud.config(bg="red4")
+
 #imagenes globales
 global logo_notas
 global logo_salud
+
+logo_notas=PhotoImage(file="img/logo_notas.png")
+logo_salud=PhotoImage(file="img/logo_salud.png")
+
 #--------------------------------
 # barra menu
 #--------------------------------
@@ -35,7 +58,6 @@ menu_salir.add_command(label="Salir")
 
 barra_menu.add_cascade(label="Convertir", menu=menu_convertir)
 barra_menu.add_cascade(label="Salir", menu=menu_salir)
-
 
 #--------------------------------
 # frame entrada
@@ -55,7 +77,19 @@ frame_datos.place(x=10, y=10)
 
 text_nombre= Label(frame_entrada,text=("OPCIONES"))
 text_nombre.config(bg="blue3", fg="black", font=("Helvetica", 20))
-text_nombre.place(x=10,y=130)
+text_nombre.place(x=140,y=160)
+
+# texto nombre_notas
+
+text_nombre= Label(frame_entrada,text=("NOTAS"))
+text_nombre.config(bg="blue3", fg="black", font=("Helvetica", 20))
+text_nombre.place(x=250,y=250)
+
+# texto nombre_imc 
+
+text_nombre= Label(frame_entrada,text=("IMC"))
+text_nombre.config(bg="blue3", fg="black", font=("Helvetica", 20))
+text_nombre.place(x=85,y=250)
 
 # texto de la plataforma
 nombre= Label(frame_entrada, text="PLATAFORMA")
@@ -116,10 +150,15 @@ nombre_c.config(bg="green3", fg="blue3", font=("Times New Roman", 18), width=10)
 nombre_c.focus_set()
 nombre_c.place(x=268,y=200)
 
-# boton para img
-bt_img = Button(frame_entrada,image=logo_salud, command=salir)
-bt_img.config(bg="White", fg="black", font=("Helvetica", 20))
-bt_img.place(x=335, y=35, width=100, height=30)
+# boton para logo_notas
+bt_img = Button(frame_entrada,image=logo_notas, command=ir_toplevel_notas)
+bt_img.config(bg="yellow", fg="yellow", font=("Helvetica", 20))
+bt_img.place(x=210, y=300, width=194, height=268)
+
+# boton para logo_salud
+bt_img = Button(frame_entrada,image=logo_salud, command=ir_toplevel_salud)
+bt_img.config(bg="green", fg="green", font=("Helvetica", 20))
+bt_img.place(x=10, y=300, width=194, height=268)
 
 # logo guanenta
 logo = PhotoImage(file="img/escudo_colegio.png")
